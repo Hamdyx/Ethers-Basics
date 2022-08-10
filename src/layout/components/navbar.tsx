@@ -6,13 +6,12 @@ import { BsFillSunFill } from "react-icons/bs";
 import { IconType } from "react-icons";
 
 const Navbar: React.FC = (props) => {
-    const toggleTheme = (ev: any) => {
-        console.log("toggleTheme called");
+    const toggleTheme = (ev: React.MouseEvent<HTMLButtonElement>) => {
         document.documentElement.classList.toggle("dark");
         localStorage.theme = localStorage.theme === "light" ? "dark" : "light";
     };
     return (
-        <nav className="flex items-center justify-center gap-5 border-b-2 h-18 px-4 pt-4 dark:bg-slate-900 dark:border-black dark:text-white">
+        <nav className="flex items-center justify-center gap-5 border-b-2 h-18 px-4 pt-4 shadow-lg dark:bg-slate-900 dark:border-black dark:text-white">
             <CustomLink title="Home" Icon={TiHome} fieldStyle="ml-auto" />
             <CustomLink title="wallet" Icon={IoMdWallet} />
             <button

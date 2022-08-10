@@ -19,7 +19,7 @@ const CurrencyTable: React.FC = () => {
     }, [dispatch]);
     return (
         <Main>
-            <div className="currency_table border-separate border-2  border-slate-500 shadow-lg rounded-t-2xl rounded-b-2xl m-auto w-1/2">
+            <div className="currency_table border-2 border-slate-500 shadow-lg rounded-t-2xl rounded-b-2xl m-auto w-1/2">
                 <div className="flex items-center border-b-2 border-b-gray-500  rounded-t-2xl h-12 text-lg px-4">
                     <p className="">#</p>
                     <p className="pl-16">Coin</p>
