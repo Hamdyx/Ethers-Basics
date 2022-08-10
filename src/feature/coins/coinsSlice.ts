@@ -16,7 +16,8 @@ type Coin = {
 };
 
 const coinsAdapter = createEntityAdapter<Coin>({
-    selectId: (coin: Coin) => coin.symbol
+    selectId: (coin: Coin) => coin.symbol,
+    sortComparer: (a, b) => b.last_price - a.last_price
 });
 
 interface SliceState {
