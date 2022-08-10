@@ -1,6 +1,21 @@
+import { EntityId } from "@reduxjs/toolkit";
+import { RootState, useAppDispatch } from "app/store";
+import { fetchCoins, selectCoinsIds } from "feature/coins/coinsSlice";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import TableRow from "./TableRow";
 
 const CurrencyTable: React.FC = () => {
+    const dispatch = useAppDispatch();
+    const coinsIds = useSelector((state: RootState) => selectCoinsIds(state));
+    console.log(coinsIds);
+    const tableRows = coinsIds.map((id: EntityId) => (
+        <TableRow key={id} coinId={id} />
+    ));
+
+    useEffect(() => {
+        dispatch(fetchCoins());
+    }, [dispatch]);
     return (
         <div className="App ">
             <header className="App-header">
@@ -12,11 +27,11 @@ const CurrencyTable: React.FC = () => {
                         <p className="ml-auto pr-16">Price</p>
                     </div>
                     <div className="table_content">
-                        <TableRow coin={{ name: "Bitcoin", abbr: "BTC" }} />
-                        <TableRow coin={{ name: "Ethereum", abbr: "ETH" }} />
-                        <TableRow
-                            coin={{ name: "Binance Coin", abbr: "BNB" }}
-                        />
+                        {tableRows}
+                        {/* <TableRow coin={{ name: "Bitcoin", abbr: "BTC" }} /> */}
+                        {/* <TableRow coin={{ name: "Ethereum", abbr: "ETH" }} /> */}
+                        {/* <TableRow coin={{ name: "BNB", abbr: "BNB" }} /> */}
+                        {/* <TableRow coin={{ name: "Cardano", abbr: "ADA" }} /> */}
                     </div>
                 </div>
             </header>
