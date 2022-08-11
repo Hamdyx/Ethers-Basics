@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import coinsReducer from "../feature/coins/coinsSlice";
+import userReducer from "../feature/users/userSlice";
 
 export const store = configureStore({
     reducer: {
-        coins: coinsReducer
+        coins: coinsReducer,
+        user: userReducer
     }
 });
 

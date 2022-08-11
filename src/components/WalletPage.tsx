@@ -1,22 +1,28 @@
-import { EntityId } from "@reduxjs/toolkit";
 import { RootState, useAppDispatch } from "app/store";
 import icons from "assets/icons";
-import { fetchCoins } from "feature/coins/coinsSlice";
 import Main from "layout/Main";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ConnectedUser from "./ConnectedUser";
+import { connectWallet, fetchSigner } from "../feature/users/userSlice";
+import { useSelector } from "react-redux";
 
 const WalletPage: React.FC = () => {
-    const [isConnected, setIsConnected] = useState<boolean>(true);
     const dispatch = useAppDispatch();
+    const isConnected = useSelector(
+        (state: RootState) => state.user.isConnected
+    );
+    const isLoading = useSelector((state: RootState) => state.user.loading);
 
     useEffect(() => {
-        dispatch(fetchCoins());
+        if (!isConnected && !isLoading) dispatch(fetchSigner());
+        console.log("isConnected Init", isConnected);
     }, [dispatch]);
 
-    const handleConnectWallet = () => {
+    const handleConnectWallet = async () => {
         console.log("handleConnectWallet");
+        await dispatch(connectWallet());
     };
+
     return (
         <Main>
             {isConnected ? (

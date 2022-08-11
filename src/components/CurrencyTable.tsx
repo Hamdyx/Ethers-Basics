@@ -1,22 +1,17 @@
 import { EntityId } from "@reduxjs/toolkit";
-import { RootState, useAppDispatch } from "app/store";
-import { fetchCoins, selectCoinsIds } from "feature/coins/coinsSlice";
+import { RootState } from "app/store";
+import { selectCoinsIds } from "feature/coins/coinsSlice";
 import Main from "layout/Main";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import TableRow from "./TableRow";
 
 const CurrencyTable: React.FC = () => {
-    const dispatch = useAppDispatch();
     const coinsIds = useSelector((state: RootState) => selectCoinsIds(state));
     console.log(coinsIds);
     const tableRows = coinsIds.map((id: EntityId, i: number) => (
         <TableRow key={id} coinId={id} index={i} />
     ));
 
-    useEffect(() => {
-        dispatch(fetchCoins());
-    }, [dispatch]);
     return (
         <Main>
             <div className="currency_table border-2 border-slate-500 shadow-lg rounded-t-2xl rounded-b-2xl m-auto w-1/2">

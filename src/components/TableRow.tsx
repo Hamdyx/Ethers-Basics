@@ -3,6 +3,7 @@ import { RootState } from "../app/store";
 import { selectCoinById } from "feature/coins/coinsSlice";
 import { useSelector } from "react-redux";
 import { EntityId } from "@reduxjs/toolkit";
+import { formatPrice } from "../utils";
 
 const TableRow: React.FC<{ coinId: EntityId; index: number }> = ({
     coinId,
@@ -15,12 +16,6 @@ const TableRow: React.FC<{ coinId: EntityId; index: number }> = ({
     type ObjectKey = keyof typeof coin;
     const icon = coin?.symbol as ObjectKey;
 
-    const formatPrice = (price: number) => {
-        return price
-            .toFixed(2)
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
     return (
         <li className="flex items-center gap-8 text-lg border-b-2 border-gray-500 h-24  px-4">
             <p className="basis-6">{index + 1}</p>
