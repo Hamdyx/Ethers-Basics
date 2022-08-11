@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import coinsReducer from "../feature/coins/coinsSlice";
 import userReducer from "../feature/users/userSlice";
+import networkReducer from "../feature/network/networkSlice";
 
 export const store = configureStore({
     reducer: {
         coins: coinsReducer,
-        user: userReducer
+        user: userReducer,
+        network: networkReducer
     }
 });
 

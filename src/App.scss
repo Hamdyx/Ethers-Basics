@@ -1,22 +1,26 @@
-nav {
-    a {
-        opacity: 0.5;
-        &[aria-current="page"] {
-            opacity: 1;
-            border-bottom: 4px solid #00ff76;
+#root {
+    min-height: 100vh;
+    nav {
+        a {
+            opacity: 0.5;
+            &[aria-current="page"] {
+                opacity: 1;
+                border-bottom: 4px solid #00ff76;
+            }
+        }
+        *:focus-visible {
+            outline: none;
         }
     }
-    *:focus-visible {
-        outline: none;
-    }
-}
 
-.main_content {
-    min-height: calc(100vmin - 62px);
-    .currency_table {
-        .table_content {
-            li:last-child {
-                border: 0;
+    .main_content {
+        // height: calc(100vmin - 62px);
+        min-height: calc(100vh - 62px);
+        .currency_table {
+            .table_content {
+                li:last-child {
+                    border: 0;
+                }
             }
         }
     }

@@ -6,8 +6,22 @@ import {
 import { RootState } from "app/store";
 import { ethers } from "ethers";
 
-const provider = new ethers.providers.Web3Provider(window!.ethereum);
+const provider = new ethers.providers.Web3Provider(window!.ethereum, "any");
 const signer = provider.getSigner();
+
+console.log("userSlice - provider", provider);
+console.log("userSlice - signer", signer);
+
+provider.on("network", (newNetwork, oldNetwork) => {
+    // When a Provider makes its initial connection, it emits a "network"
+    // event with a null oldNetwork along with the newNetwork. So, if the
+    // oldNetwork exists, it represents a changing network
+    console.log("userSlice network - newNetwork", newNetwork);
+    console.log("userSlice network - oldNetwork", oldNetwork);
+    if (oldNetwork) {
+        window.location.reload();
+    }
+});
 
 type User = {
     address: string;
@@ -53,7 +67,6 @@ export const fetchBalance = createAsyncThunk(
     async (acc: string) => {
         console.log("fetchBalance AsyncThunk");
         console.log(`acc => ${acc}`);
-
         const res = await provider.getBalance(acc);
         console.log("fetchBalance AsyncThunk res");
         console.log(res);
@@ -84,27 +97,30 @@ export const getSigner = createAsyncThunk("user/getSigner", async () => {
     return myAddress;
 });
 
-/* getNetwork: (state) => {
-            const network = provider.getNetwork();
+export const getProvider = createAsyncThunk("user/getProvider", async () => {
+    console.log("getProvider - AsyncThunk");
+    const _provider = new ethers.providers.Web3Provider(
+        window!.ethereum,
+        "any"
+    );
+    console.log("getProvider - _provider", _provider);
 
-            console.log("getNetwork", network);
-        } */
-
-export const getNetwork = createAsyncThunk("user/getNetwork", async () => {
-    console.log("getNetwork AsyncThunk");
-    const network = await provider.getNetwork();
-    console.log("getNetwork network", network);
-
-    // return network;
+    return _provider;
 });
 
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
+        lockWallet: (state) => {
+            console.log("lockWallet");
+            state.currAddress = "";
+            state.isConnected = false;
+        },
         calcTokensValue: (state, action) => {
             const price = action.payload.toFixed(2);
-            console.log("calcTokensValue", action.payload);
+            console.log("calcTokensValue - price", price);
+            console.log("calcTokensValue - action.payload", action.payload);
             state.tokensValue = ethers.utils.commify(
                 state.tokensBalance * price
             );
@@ -116,16 +132,17 @@ const userSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(fetchSigner.rejected, (state, action) => {
+            console.log("fetchSigner.rejected - action.error", action.error);
             state.loading = false;
             state.error = true;
+            state.currAddress = "";
+            state.isConnected = false;
         });
         builder.addCase(fetchSigner.fulfilled, (state, action) => {
-            userAdapter.addOne(state, {
-                ...state.entities[0],
-                address: action.payload
-            });
-            console.log("fetchSigner.fulfilled");
-            console.log(action.payload);
+            console.log(
+                "fetchSigner.fulfilled - action.payload",
+                action.payload
+            );
             state.loading = false;
             state.error = false;
             state.isConnected = true;
@@ -136,70 +153,57 @@ const userSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(connectWallet.rejected, (state, action) => {
+            console.log("connectWallet.rejected - action.error", action.error);
             state.loading = false;
+            state.isConnected = false;
             state.error = true;
         });
         builder.addCase(connectWallet.fulfilled, (state, action) => {
-            console.log("connectWallet.fulfilled action.payload");
-            console.log(action.payload);
-            userAdapter.addOne(state, { ...state, address: action.payload });
+            console.log("connectWallet.fulfilled", action.payload);
             state.loading = false;
             state.error = false;
             state.isConnected = true;
+            state.currAddress = action.payload;
         });
         // ********************** getSigner **********************
         builder.addCase(getSigner.pending, (state, action) => {
             state.loading = true;
         });
         builder.addCase(getSigner.rejected, (state, action) => {
+            console.log("getSigner- action.error", action.error);
             state.loading = false;
             state.error = true;
-            console.log(action.error);
+            state.isConnected = false;
+            state.currAddress = "";
         });
         builder.addCase(getSigner.fulfilled, (state, action) => {
-            // userAdapter.setAll(state, action.payload);
-            console.log(action.payload);
+            console.log("getSigner - action.payload", action.payload);
             state.loading = false;
             state.error = false;
             state.isConnected = true;
+            state.currAddress = action.payload;
         });
         // ********************** fetchBalance **********************
         builder.addCase(fetchBalance.pending, (state, action) => {
             state.loading = true;
         });
         builder.addCase(fetchBalance.rejected, (state, action) => {
+            console.log("fetchBalance - action.error", action.error);
             state.loading = false;
             state.error = true;
-            console.log(action.error);
         });
         builder.addCase(fetchBalance.fulfilled, (state, action) => {
-            console.log("fetchBalance action.payload");
-            console.log(action.payload);
+            console.log("fetchBalance - action.payload", action.payload);
             state.loading = false;
             state.error = false;
             state.tokensBalance = action.payload;
-        });
-        // ********************** getNetwork **********************
-        builder.addCase(getNetwork.pending, (state, action) => {
-            state.loading = true;
-        });
-        builder.addCase(getNetwork.rejected, (state, action) => {
-            state.loading = false;
-            state.error = true;
-            console.log(action.error);
-        });
-        builder.addCase(getNetwork.fulfilled, (state, action) => {
-            console.log("getNetwork action.payload");
-            console.log(action.payload);
-            state.loading = false;
-            state.error = false;
         });
     }
 });
 
 export default userSlice.reducer;
 
-export const { calcTokensValue } = userSlice.actions;
+export const { calcTokensValue, lockWallet } = userSlice.actions;
 
 // Export the customized selectors for this adapter using `getSelectors`
 export const {

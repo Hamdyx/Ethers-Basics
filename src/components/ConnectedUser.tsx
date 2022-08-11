@@ -1,18 +1,22 @@
 import { RootState, useAppDispatch } from "app/store";
 import icons from "assets/icons";
+import { ethers } from "ethers";
 import { selectCoinById } from "feature/coins/coinsSlice";
-import { fetchBalance, getNetwork } from "feature/users/userSlice";
+import { fetchBalance, fetchSigner, lockWallet } from "feature/users/userSlice";
+import { getNetwork } from "feature/network/networkSlice";
 import { useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { calcTokensValue } from "../feature/users/userSlice";
+import { formatAddress } from "utils";
 
 const ConnectedUser: React.FC = () => {
     const dispatch = useAppDispatch();
     const userAddress = useSelector(
         (state: RootState) => state.user.currAddress
     );
+    const network = useSelector((state: RootState) => state.network.name);
     const token = useSelector((state: RootState) =>
         selectCoinById(state, "ETH")
     );
@@ -24,13 +28,36 @@ const ConnectedUser: React.FC = () => {
         (state: RootState) => state.user.tokensBalance
     );
 
-    console.log("token", token);
-
     function copyToClipboard() {
         window.navigator.clipboard.writeText(userAddress);
     }
 
     useEffect(() => {
+        const provider = new ethers.providers.Web3Provider(
+            window!.ethereum,
+            "any"
+        );
+        console.log("seting event listeners");
+        console.log(
+            "************************* provide *************************"
+        );
+        console.log(provider);
+
+        window.ethereum.on("accountsChanged", (accounts: any) => {
+            console.log("userSlice accountsChanged - accounts", accounts);
+            if (!accounts) {
+                console.log(`no account - disconnect`);
+                dispatch(lockWallet());
+            } else dispatch(fetchSigner());
+        });
+
+        return () => {
+            console.log(`remove event listeners on unmount`);
+        };
+    }, [dispatch]);
+
+    useEffect(() => {
+        console.log("userAddress changed", userAddress);
         if (userAddress) {
             dispatch(fetchBalance(userAddress));
             dispatch(getNetwork());
@@ -46,14 +73,8 @@ const ConnectedUser: React.FC = () => {
         }
     }, [dispatch, tokensBalance, token]);
 
-    const formatAddress = (add: string) => {
-        const firstSec = add.slice(0, 5);
-        const secondSec = add.slice(add.length - 8);
-        return `${firstSec}....${secondSec}`;
-    };
-
     return (
-        <div className="flex flex-col items-center justify-center gap-4 dark:bg-slate-600 w-3/5 rounded-xl m-auto">
+        <div className="flex flex-col items-center justify-center gap-4 dark:bg-slate-600 w-4/5 md:w-3/5 rounded-xl m-auto">
             <div className="flex items-center justify-center py-4 w-11/12 border-b-2 border-slate-400">
                 <div className="flex items-center gap-3">
                     <img
@@ -61,7 +82,9 @@ const ConnectedUser: React.FC = () => {
                         className="fill-white h-8 w-8"
                         alt=""
                     />
-                    <h3>Energi Network</h3>
+                    <h3 className="capitalize">{`${
+                        network === "unknown" ? "local" : network
+                    } network`}</h3>
                 </div>
                 <div className="flex items-center gap-2 ml-auto">
                     <span className="h-2 w-2 bg-emerald-400 rounded-full" />
@@ -72,14 +95,15 @@ const ConnectedUser: React.FC = () => {
                 <div className="flex items-center w-full">
                     <div className="flex items-center gap-2 ">
                         <img src={icons.Metamask} className="h-6 w-6" alt="" />
-                        <input
-                            className="text-slate-600 dark:text-slate-300 bg-transparent"
-                            defaultValue={formatAddress(userAddress)}
-                            disabled
+
+                        <p
+                            className="text-slate-600 dark:text-slate-300 bg-transparent w-full"
                             id="address_field"
-                        />
+                        >
+                            {formatAddress(userAddress)}
+                        </p>
                     </div>
-                    <div className="flex items-center gap-6 ml-auto">
+                    <div className="flex items-center gap-2 sm:gap-6 ml-auto">
                         <button onClick={copyToClipboard}>
                             <MdContentCopy className="h-6 w-6" />
                         </button>

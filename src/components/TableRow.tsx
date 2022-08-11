@@ -17,9 +17,9 @@ const TableRow: React.FC<{ coinId: EntityId; index: number }> = ({
     const icon = coin?.symbol as ObjectKey;
 
     return (
-        <li className="flex items-center gap-8 text-lg border-b-2 border-gray-500 h-24  px-4">
-            <p className="basis-6">{index + 1}</p>
-            <p className="basis-1/3">
+        <li className="flex items-center gap-2 2xl:gap-8 xl:gap-6 md:gap-4 text-lg border-b-2 border-gray-500 h-24 px-4">
+            <p className=" basis-1/12">{index + 1}</p>
+            <p className="basis-2/3 sm:basis-6/12">
                 <span className="flex items-center font-normal gap-3">
                     <img
                         src={Icons[icon]}
@@ -29,10 +29,10 @@ const TableRow: React.FC<{ coinId: EntityId; index: number }> = ({
                     {coin?.name}
                 </span>
             </p>
-            <p className="text-center basis-1/4 font-light pr-4">
+            <p className="text-center basis-1/12 font-light pr-4 hidden sm:block">
                 {coin?.symbol}
             </p>
-            <p className="ml-auto font-light basis-1/4 text-end pr-16">
+            <p className="ml-auto font-light basis-4/12 text-end pr-6 2xl:pr-16 xl:pr-14 lg:pr-10">
                 ${formatPrice(coin!.last_price)}
             </p>
         </li>
