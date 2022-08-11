@@ -1,7 +1,7 @@
 import { RootState, useAppDispatch } from "app/store";
 import icons from "assets/icons";
 import { selectCoinById } from "feature/coins/coinsSlice";
-import { fetchBalance } from "feature/users/userSlice";
+import { fetchBalance, getNetwork } from "feature/users/userSlice";
 import { useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
@@ -31,7 +31,10 @@ const ConnectedUser: React.FC = () => {
     }
 
     useEffect(() => {
-        if (userAddress) dispatch(fetchBalance(userAddress));
+        if (userAddress) {
+            dispatch(fetchBalance(userAddress));
+            dispatch(getNetwork());
+        }
     }, [dispatch, userAddress]);
 
     useEffect(() => {

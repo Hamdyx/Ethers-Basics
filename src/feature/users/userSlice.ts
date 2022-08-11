@@ -84,6 +84,20 @@ export const getSigner = createAsyncThunk("user/getSigner", async () => {
     return myAddress;
 });
 
+/* getNetwork: (state) => {
+            const network = provider.getNetwork();
+
+            console.log("getNetwork", network);
+        } */
+
+export const getNetwork = createAsyncThunk("user/getNetwork", async () => {
+    console.log("getNetwork AsyncThunk");
+    const network = await provider.getNetwork();
+    console.log("getNetwork network", network);
+
+    // return network;
+});
+
 const userSlice = createSlice({
     name: "user",
     initialState,
@@ -164,6 +178,21 @@ const userSlice = createSlice({
             state.loading = false;
             state.error = false;
             state.tokensBalance = action.payload;
+        });
+        // ********************** getNetwork **********************
+        builder.addCase(getNetwork.pending, (state, action) => {
+            state.loading = true;
+        });
+        builder.addCase(getNetwork.rejected, (state, action) => {
+            state.loading = false;
+            state.error = true;
+            console.log(action.error);
+        });
+        builder.addCase(getNetwork.fulfilled, (state, action) => {
+            console.log("getNetwork action.payload");
+            console.log(action.payload);
+            state.loading = false;
+            state.error = false;
         });
     }
 });

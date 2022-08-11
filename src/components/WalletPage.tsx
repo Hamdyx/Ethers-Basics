@@ -11,12 +11,11 @@ const WalletPage: React.FC = () => {
     const isConnected = useSelector(
         (state: RootState) => state.user.isConnected
     );
-    const isLoading = useSelector((state: RootState) => state.user.loading);
 
     useEffect(() => {
-        if (!isConnected && !isLoading) dispatch(fetchSigner());
+        if (!isConnected) dispatch(fetchSigner());
         console.log("isConnected Init", isConnected);
-    }, [dispatch]);
+    }, [dispatch, isConnected]);
 
     const handleConnectWallet = async () => {
         console.log("handleConnectWallet");

@@ -99,8 +99,7 @@ import EGLD from "./icons/EGLD.svg";
 //     ILV.svg    NEO.svg    RFOX.svg    TOMO.svg
 //    INJ.svg    NEXO.svg   RGT.svg     TRB.svg
 //    IOST.svg   NMR.svg    RIF.svg     TRX.svg
-
-export default {
+const Icons = {
     BTC,
     ETH,
     BNB,
@@ -172,3 +171,5 @@ export default {
     DUSK,
     EGLD
 };
+
+export default Icons;
