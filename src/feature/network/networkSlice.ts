@@ -50,6 +50,7 @@ const networkSlice = createSlice({
             state.chainId = action.payload.chainId;
             state.ensAddress = action.payload.ensAddress;
             state.name = action.payload.name;
+            state.loading = false;
         });
     }
 });

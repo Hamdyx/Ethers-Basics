@@ -68,37 +68,141 @@ import DOT from "./icons/DOT.svg";
 import DPI from "./icons/DPI.svg";
 import DUSK from "./icons/DUSK.svg";
 import EGLD from "./icons/EGLD.svg";
+import ELON from "./icons/ELON.svg";
+import ENJ from "./icons/ENJ.svg";
+import EOS from "./icons/EOS.svg";
+import EWT from "./icons/EWT.svg";
+import FARM from "./icons/FARM.svg";
+import FIL from "./icons/FIL.svg";
+import FLOW from "./icons/FLOW.svg";
+import FRM from "./icons/FRM.svg";
+import FTM from "./icons/FTM.svg";
+import FTT from "./icons/FTT.svg";
+import FUN from "./icons/FUN.svg";
+import GHST from "./icons/GHST.svg";
+import GLM from "./icons/GLM.svg";
+import GNO from "./icons/GNO.svg";
+import GRT from "./icons/GRT.svg";
+import HARD from "./icons/HARD.svg";
+import HBAR from "./icons/HBAR.svg";
+import HEGIC from "./icons/HEGIC.svg";
+import HIFI from "./icons/HIFI.svg";
+import HIVE from "./icons/HIVE.svg";
+import HNT from "./icons/HNT.svg";
+import HOT from "./icons/HOT.svg";
+import HT from "./icons/HT.svg";
+import HXRO from "./icons/HXRO.svg";
+import ICX from "./icons/ICX.svg";
+import ILV from "./icons/ILV.svg";
+import INJ from "./icons/INJ.svg";
+import IOST from "./icons/IOST.svg";
+import IOTX from "./icons/IOTX.svg";
+import KAVA from "./icons/KAVA.svg";
+import KEEP from "./icons/KEEP.svg";
+import KMD from "./icons/KMD.svg";
+import KNC from "./icons/KNC.svg";
+import KP3R from "./icons/KP3R.svg";
+import KSM from "./icons/KSM.svg";
+import LEO from "./icons/LEO.svg";
+import LOOM from "./icons/LOOM.svg";
+import LRC from "./icons/LRC.svg";
+import LSK from "./icons/LSK.svg";
+import LTC from "./icons/LTC.svg";
+import LUNA from "./icons/LUNA.svg";
+import MAPS from "./icons/MAPS.svg";
+import MASK from "./icons/MASK.svg";
+import MATIC from "./icons/MATIC.svg";
+import MCO from "./icons/MCO.svg";
+import MDX from "./icons/MDX.svg";
+import MFT from "./icons/MFT.svg";
+import MIOTA from "./icons/MIOTA.svg";
+import MIR from "./icons/MIR.svg";
+import MKR from "./icons/MKR.svg";
+import MTL from "./icons/MTL.svg";
+import NANO from "./icons/NANO.svg";
+import NEAR from "./icons/NEAR.svg";
+import NEO from "./icons/NEO.svg";
+import NEXO from "./icons/NEXO.svg";
+import NMR from "./icons/NMR.svg";
+import NPXS from "./icons/NPXS.svg";
+import NU from "./icons/NU.svg";
+import NXM from "./icons/NXM.svg";
+import NXS from "./icons/NXS.svg";
+import OCEAN from "./icons/OCEAN.svg";
+import OGN from "./icons/OGN.svg";
+import OKB from "./icons/OKB.svg";
+import OMG from "./icons/OMG.svg";
+import OMI from "./icons/OMI.svg";
+import ONE from "./icons/ONE.svg";
+import ONT from "./icons/ONT.svg";
+import ORN from "./icons/ORN.svg";
+import PAXG from "./icons/PAXG.svg";
+import PERP from "./icons/PERP.svg";
+import POLS from "./icons/POLS.svg";
+import POLY from "./icons/POLY.svg";
+import POWR from "./icons/POWR.svg";
+import PPT from "./icons/PPT.svg";
+import PREMIA from "./icons/PREMIA.svg";
+import QKC from "./icons/QKC.svg";
+import QNT from "./icons/QNT.svg";
+import QTUM from "./icons/QTUM.svg";
+import RARI from "./icons/RARI.svg";
+import REEF from "./icons/REEF.svg";
+import REN from "./icons/REN.svg";
+import REP from "./icons/REP.svg";
+import RFOX from "./icons/RFOX.svg";
+import RGT from "./icons/RGT.svg";
+import RIF from "./icons/RIF.svg";
+import RLC from "./icons/RLC.svg";
+import ROOK from "./icons/ROOK.svg";
+import ROSE from "./icons/ROSE.svg";
+import RSR from "./icons/RSR.svg";
+import RUNE from "./icons/RUNE.svg";
+import RVN from "./icons/RVN.svg";
+import SCRT from "./icons/SCRT.svg";
+import SC from "./icons/SC.svg";
+import SFI from "./icons/SFI.svg";
+import SFP from "./icons/SFP.svg";
+import SHIB from "./icons/SHIB.svg";
+import SLP from "./icons/SLP.svg";
+import SNT from "./icons/SNT.svg";
+import SNX from "./icons/SNX.svg";
+import SOL from "./icons/SOL.svg";
+import SPELL from "./icons/SPELL.svg";
+import SRM from "./icons/SRM.svg";
+import STAKE from "./icons/STAKE.svg";
+import STEEM from "./icons/STEEM.svg";
+import STORJ from "./icons/STORJ.svg";
+import STX from "./icons/STX.svg";
+import SUPER from "./icons/SUPER.svg";
+import SUSHI from "./icons/SUSHI.svg";
+import SWAP from "./icons/SWAP.svg";
+import SYS from "./icons/SYS.svg";
+import THETA from "./icons/THETA.svg";
+import TOMO from "./icons/TOMO.svg";
+import TRB from "./icons/TRB.svg";
+import TRX from "./icons/TRX.svg";
+import TWT from "./icons/TWT.svg";
+import UBT from "./icons/UBT.svg";
+import UMA from "./icons/UMA.svg";
+import USDC from "./icons/USDC.svg";
+import VET from "./icons/VET.svg";
+import VGX from "./icons/VGX.svg";
+import WAN from "./icons/WAN.svg";
+import WAVES from "./icons/WAVES.svg";
+import WRX from "./icons/WRX.svg";
+import XEM from "./icons/XEM.svg";
+import XLM from "./icons/XLM.svg";
+import XMR from "./icons/XMR.svg";
+import XTZ from "./icons/XTZ.svg";
+import YFII from "./icons/YFII.svg";
+import YFI from "./icons/YFI.svg";
+import ZEC from "./icons/ZEC.svg";
+import ZEN from "./icons/ZEN.svg";
+import ZIL from "./icons/ZIL.svg";
+import ZKS from "./icons/ZKS.svg";
+import ZRX from "./icons/ZRX.svg";
 
-//    ELON.svg   IOTX.svg   NPXS.svg    RLC.svg    TWT.svg
-//     ENJ.svg    KAVA.svg   NRG.svg     ROOK.svg   UBT.svg
-//     EOS.svg    KEEP.svg   NU.svg      ROSE.svg   UMA.svg
-//    ETC.svg    KMD.svg    NXM.svg     RSR.svg    UNI.svg
-//    ETH.svg    KNC.svg    NXS.svg     RUNE.svg   USDC.svg
-//    EWT.svg    KP3R.svg   OCEAN.svg   RVN.svg    USDE.svg
-//    FARM.svg   KSM.svg    OGN.svg     SAND.svg   VET.svg
-//     FIL.svg    LEO.svg    OKB.svg     SCRT.svg   VGX.svg
-//    FLOW.svg   LINK.svg   OMG.svg     SC.svg     WAN.svg
-//     FRM.svg    LOOM.svg   OMI.svg     SFI.svg    WAVES.svg
-//     FTM.svg    LRC.svg    ONE.svg     SFP.svg    WNRG.svg
-//    FTT.svg    LSK.svg    ONT.svg     SHIB.svg   WRX.svg
-//    FUN.svg    LTC.svg    ORN.svg     SLP.svg    XEM.svg
-//   GHST.svg   LUNA.svg   PAXG.svg    SNT.svg    XLM.svg
-//     GLM.svg    MANA.svg   PERP.svg    SNX.svg    XMR.svg
-//     GNO.svg    MAPS.svg   POLS.svg    SOL.svg    XRP.svg
-//     GRT.svg    MASK.svg   POLY.svg    SPELL.svg  XTZ.svg
-//     HARD.svg   MATIC.svg  POWR.svg    SRM.svg    YFII.svg
-//     HBAR.svg   MCO.svg    PPT.svg     STAKE.svg  YFI.svg
-//   HEGIC.svg  MDX.svg    PREMIA.svg  STEEM.svg  ZEC.svg
-//     HIFI.svg   MFT.svg    QKC.svg     STORJ.svg  ZEN.svg
-//      HIVE.svg   MIOTA.svg  QNT.svg     STX.svg    ZIL.svg
-//     HNT.svg    MIR.svg    QTUM.svg    SUPER.svg  ZKS.svg
-//     HOT.svg    MKR.svg    RARI.svg    SUSHI.svg  ZRX.svg
-//    HT.svg     MTL.svg    REEF.svg    SWAP.svg
-//    HXRO.svg   NANO.svg   REN.svg     SYS.svg
-//     ICX.svg    NEAR.svg   REP.svg     THETA.svg
-//     ILV.svg    NEO.svg    RFOX.svg    TOMO.svg
-//    INJ.svg    NEXO.svg   RGT.svg     TRB.svg
-//    IOST.svg   NMR.svg    RIF.svg     TRX.svg
 const Icons = {
     BTC,
     ETH,
@@ -106,8 +210,8 @@ const Icons = {
     LINK,
     USDE,
     DAI,
-    WNRG,
     NRG,
+    WNRG,
     ETC,
     XRP,
     SAND,
@@ -169,7 +273,141 @@ const Icons = {
     DOT,
     DPI,
     DUSK,
-    EGLD
+    EGLD,
+    ELON,
+    ENJ,
+    EOS,
+    EWT,
+    FARM,
+    FIL,
+    FLOW,
+    FRM,
+    FTM,
+    FTT,
+    FUN,
+    GHST,
+    GLM,
+    GNO,
+    GRT,
+    HARD,
+    HBAR,
+    HEGIC,
+    HIFI,
+    HIVE,
+    HNT,
+    HOT,
+    HT,
+    HXRO,
+    ICX,
+    ILV,
+    INJ,
+    IOST,
+    IOTX,
+    KAVA,
+    KEEP,
+    KMD,
+    KNC,
+    KP3R,
+    KSM,
+    LEO,
+    LOOM,
+    LRC,
+    LSK,
+    LTC,
+    LUNA,
+    MAPS,
+    MASK,
+    MATIC,
+    MCO,
+    MDX,
+    MFT,
+    MIOTA,
+    MIR,
+    MKR,
+    MTL,
+    NANO,
+    NEAR,
+    NEO,
+    NEXO,
+    NMR,
+    NPXS,
+    NU,
+    NXM,
+    NXS,
+    OCEAN,
+    OGN,
+    OKB,
+    OMG,
+    OMI,
+    ONE,
+    ONT,
+    ORN,
+    PAXG,
+    PERP,
+    POLS,
+    POLY,
+    POWR,
+    PPT,
+    PREMIA,
+    QKC,
+    QNT,
+    QTUM,
+    RARI,
+    REEF,
+    REN,
+    REP,
+    RFOX,
+    RGT,
+    RIF,
+    RLC,
+    ROOK,
+    ROSE,
+    RSR,
+    RUNE,
+    RVN,
+    SCRT,
+    SC,
+    SFI,
+    SFP,
+    SHIB,
+    SLP,
+    SNT,
+    SNX,
+    SOL,
+    SPELL,
+    SRM,
+    STAKE,
+    STEEM,
+    STORJ,
+    STX,
+    SUPER,
+    SUSHI,
+    SWAP,
+    SYS,
+    THETA,
+    TOMO,
+    TRB,
+    TRX,
+    TWT,
+    UBT,
+    UMA,
+    USDC,
+    VET,
+    VGX,
+    WAN,
+    WAVES,
+    WRX,
+    XEM,
+    XLM,
+    XMR,
+    XTZ,
+    YFII,
+    YFI,
+    ZEC,
+    ZEN,
+    ZIL,
+    ZKS,
+    ZRX
 };
 
 export default Icons;

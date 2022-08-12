@@ -1,12 +1,9 @@
-# Energi Frontend Challenge :muscle:
+# Ethers Basics
 
-Hi!
-
-Welcome to the Energi Frontend Challenge. All the information you need can be found in #1.
-
-Do your best, we are looking forward to seeing what you can do!
-
-The Energi Tech Team
+This is a basic web application that uses blockchain technology through EtherJS.
+The project has two pages:
+1- Cryptocurrencies table mapped to last price with pagination implemented
+2- Wallet page that handles user account with metamask or other providers
 
 ## Project Stack
 

@@ -40,7 +40,7 @@ const EnergiApi = "https://api.energiswap.exchange/v1/assets";
 
 export const fetchCoins = createAsyncThunk("coins/fetchCoins", async () => {
     const response = await axios.get(EnergiApi);
-    const data = Object.values(response.data).slice(0, 10);
+    const data = Object.values(response.data);
     return data;
 });
 

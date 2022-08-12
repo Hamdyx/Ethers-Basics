@@ -1,15 +1,13 @@
 import { RootState, useAppDispatch } from "app/store";
 import icons from "assets/icons";
-import { ethers } from "ethers";
 import { selectCoinById } from "feature/coins/coinsSlice";
 import { fetchBalance, fetchSigner, lockWallet } from "feature/users/userSlice";
-import { getNetwork } from "feature/network/networkSlice";
 import { useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { calcTokensValue } from "../feature/users/userSlice";
-import { formatAddress } from "utils";
+import { formatAddress, formatPrice } from "utils";
 
 const ConnectedUser: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -33,16 +31,6 @@ const ConnectedUser: React.FC = () => {
     }
 
     useEffect(() => {
-        const provider = new ethers.providers.Web3Provider(
-            window!.ethereum,
-            "any"
-        );
-        console.log("seting event listeners");
-        console.log(
-            "************************* provide *************************"
-        );
-        console.log(provider);
-
         window.ethereum.on("accountsChanged", (accounts: any) => {
             console.log("userSlice accountsChanged - accounts", accounts);
             if (!accounts) {
@@ -50,17 +38,13 @@ const ConnectedUser: React.FC = () => {
                 dispatch(lockWallet());
             } else dispatch(fetchSigner());
         });
-
-        return () => {
-            console.log(`remove event listeners on unmount`);
-        };
     }, [dispatch]);
 
     useEffect(() => {
         console.log("userAddress changed", userAddress);
         if (userAddress) {
             dispatch(fetchBalance(userAddress));
-            dispatch(getNetwork());
+            // dispatch(getNetwork());
         }
     }, [dispatch, userAddress]);
 
@@ -128,7 +112,7 @@ const ConnectedUser: React.FC = () => {
                         {tokensBalance}
                     </p>
                     <p className="text-3xl text-center dark:text-slate-100">
-                        {`$ ${tokensValue}`}
+                        {`$ ${formatPrice(parseFloat(tokensValue))}`}
                     </p>
                 </div>
             </div>

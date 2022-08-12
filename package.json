@@ -1,18 +1,11 @@
 {
-    "name": "frontend-challenge",
+    "name": "ethers-basics",
     "version": "1.0.0",
-    "description": "Hi!",
+    "description": "basic web application that uses blockchain technology through EtherJS",
     "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://gitlab.com/tech404/frontend-challenge.git"
-    },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "bugs": {
-        "url": "https://gitlab.com/tech404/frontend-challenge/issues"
-    },
     "dependencies": {
         "@reduxjs/toolkit": "^1.8.3",
         "@testing-library/jest-dom": "^5.16.5",
@@ -27,6 +20,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.4.0",
+        "react-paginate": "^8.1.3",
         "react-redux": "^8.0.2",
         "react-router-dom": "^6.3.0",
         "react-scripts": "5.0.1",

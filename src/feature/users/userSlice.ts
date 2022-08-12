@@ -9,9 +9,6 @@ import { ethers } from "ethers";
 const provider = new ethers.providers.Web3Provider(window!.ethereum, "any");
 const signer = provider.getSigner();
 
-console.log("userSlice - provider", provider);
-console.log("userSlice - signer", signer);
-
 provider.on("network", (newNetwork, oldNetwork) => {
     // When a Provider makes its initial connection, it emits a "network"
     // event with a null oldNetwork along with the newNetwork. So, if the
@@ -121,9 +118,7 @@ const userSlice = createSlice({
             const price = action.payload.toFixed(2);
             console.log("calcTokensValue - price", price);
             console.log("calcTokensValue - action.payload", action.payload);
-            state.tokensValue = ethers.utils.commify(
-                state.tokensBalance * price
-            );
+            state.tokensValue = String(state.tokensBalance * price);
         }
     },
     extraReducers: (builder) => {
